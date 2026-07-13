@@ -19,7 +19,14 @@ export default function CommentSection({ postId }: { postId: string }) {
     setText('');
     setSubmitting(false);
   };
-
+  const toggleExpand = (id:string) => {
+    setExpandedComments(prev =>
+      prev.includes(id)
+        ? prev.filter(x => x !== id)
+        : [...prev, id]
+    );
+  };
+  const [expandedComments, setExpandedComments] = useState<string[]>([]);
   return (
     <div className="px-4 pb-3 pt-1">
       {comments.length > 0 && (
@@ -28,22 +35,52 @@ export default function CommentSection({ postId }: { postId: string }) {
             <li key={c.id} className="flex items-start gap-2 group">
               <Avatar src={c.profiles?.avatar_url} name={c.profiles?.display_name} size="sm" />
               <div className="flex-1 bg-gray-100 rounded-2xl px-3 py-1.5">
-                <p className="text-sm">
-                  <span className="font-semibold mr-1">{c.profiles?.username}</span>
-                  {c.content}
-                </p>
+                <p
+                  className={`text-sm break-words ${
+                    expandedComments.includes(c.id)
+                    ? ''
+                    : 'line-clamp-3'
+                  }`}
+                  >
+                    <span className="font-semibold mr-1">
+                      {c.profiles?.username}
+                    </span>
+                    {c.content}
+                  </p>
+
+                  {c.content.length > 120 && (
+                    <button
+                      onClick={() => toggleExpand(c.id)}
+                      className="text-blue-500 text-sm"
+                    >
+                      {expandedComments.includes(c.id)
+                        ? 'Show less'
+                        : 'Read more...'}
+                    </button>
+                  )}
               </div>
               <div className="flex flex-col items-center">
                 <span className="text-[11px] text-gray-400 mt-1">
                   {formatDistanceToNow(new Date(c.created_at), { addSuffix: true })}
                 </span>
                 {c.user_id === user?.id && (
-                  <button
-                    onClick={() => deleteComment(c.id)}
-                    className="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500 mt-0.5"
-                  >
-                    <Trash2 size={13} />
-                  </button>
+                   <>
+                    <button
+                      className="text-xs text-blue-500"
+                      onClick={() => {
+                        // เปิด edit mode
+                      }}
+                    >
+                      Edit
+                    </button>
+
+                    <button
+                      onClick={() => deleteComment(c.id)}
+                      className="text-gray-400 hover:text-red-500"
+                    >
+                      <Trash2 size={13} />
+                    </button>
+                  </>
                 )}
               </div>
             </li>
