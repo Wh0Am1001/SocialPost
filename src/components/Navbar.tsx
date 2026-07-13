@@ -12,9 +12,11 @@ export default function Navbar({ onCreatePost }: NavbarProps) {
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
-    await signOut();
-    navigate('/login');
-  };
+      document.documentElement.classList.remove("dark");
+      localStorage.removeItem("theme");
+        await signOut();
+        navigate('/login');
+      };
 
   return (
     <>
