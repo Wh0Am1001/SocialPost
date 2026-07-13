@@ -18,7 +18,8 @@ function AuthRedirect({ children }: { children: JSX.Element }) {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+      <BrowserRouter>
       <AuthProvider>
         <Routes>
 
@@ -66,5 +67,7 @@ export default function App() {
         </Routes>
       </AuthProvider>
     </BrowserRouter>
+    </div>
+    
   );
 }

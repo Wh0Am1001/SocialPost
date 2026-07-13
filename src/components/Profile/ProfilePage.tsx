@@ -42,30 +42,55 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="flex justify-center py-16">
+      <div className="flex
+      justify-center
+      py-16
+      min-h-screen
+      bg-gray-50
+      dark:bg-gray-950">
         <Spinner size={32} />
       </div>
     );
   }
 
   if (!profile) {
-    return <p className="text-center py-16 text-gray-400">User not found.</p>;
+    return <p className="text-center
+    py-16
+    text-gray-400
+    dark:text-gray-500">User not found.</p>;
   }
 
   return (
-    <div className="max-w-lg mx-auto px-3 sm:px-0 pt-6 pb-20">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-center gap-5 mb-6">
+    <div className="max-w-lg
+      mx-auto
+      px-3
+      sm:px-0
+      pt-6
+      pb-20
+      min-h-screen
+      bg-gray-50
+      dark:bg-gray-950">
+      <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl shadow-sm p-6 flex items-center gap-5 mb-6 text-gray-900 dark:text-gray-100">
         <Avatar src={profile.avatar_url} name={profile.display_name} size="lg" />
         <div className="flex-1">
           <h1 className="text-xl font-bold">{profile.display_name ?? profile.username}</h1>
-          <p className="text-gray-400 text-sm">@{profile.username}</p>
+          <p className="text-gray-400 dark:text-gray-500 text-sm">@{profile.username}</p>
           {profile.bio && <p className="text-sm mt-1">{profile.bio}</p>}
-          <p className="text-sm text-gray-500 mt-1">{posts.length} posts</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{posts.length} posts</p>
         </div>
         {isOwnProfile && (
           <button
             onClick={() => setEditing(true)}
-            className="text-sm font-semibold text-brand-600 border border-brand-500 rounded-lg px-3 py-1.5 hover:bg-brand-50"
+           className="bg-brand-600
+          hover:bg-brand-700
+          dark:bg-brand-500
+          dark:hover:bg-brand-600
+          text-white
+          px-4
+          py-2
+          rounded-lg
+          text-sm
+          font-semibold"
           >
             Edit Profile
           </button>

@@ -67,11 +67,35 @@ export default function EditProfileModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-40 flex items-center justify-center p-4 animate-fade-in">
-      <div className="bg-white rounded-2xl w-full max-w-md overflow-hidden">
-        <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+     <div
+    className="
+      fixed
+      inset-0
+      bg-black/50
+      dark:bg-black/70
+      z-40
+      flex
+      items-center
+      justify-center
+      p-4
+      animate-fade-in
+    "
+  >
+    <div
+      className="
+        bg-white
+        dark:bg-gray-900
+        text-gray-900
+        dark:text-gray-100
+        rounded-2xl
+        w-full
+        max-w-md
+        overflow-hidden
+      "
+    >
+        <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-700 px-4 py-3">
           <h2 className="font-semibold">Edit profile</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300" >
             <X size={20} />
           </button>
         </div>
@@ -89,12 +113,26 @@ export default function EditProfileModal({
           </div>
 
           <div>
-            <label className="text-xs text-gray-500">Display name</label>
+            <label className="text-xs text-gray-500 dark:text-gray-400">Display name</label>
             <input
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
-            />
+              className="w-full
+              border
+              border-gray-200
+              dark:border-gray-700
+              bg-white
+              dark:bg-gray-800
+              text-gray-900
+              dark:text-white
+              rounded-lg
+              px-3
+              py-2
+              text-sm
+              focus:outline-none
+              focus:ring-2
+              focus:ring-brand-500"
+                          />
           </div>
 
           <div>
@@ -103,7 +141,22 @@ export default function EditProfileModal({
               value={bio}
               onChange={(e) => setBio(e.target.value)}
               rows={3}
-              className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-brand-500"
+              className="w-full
+                border
+                border-gray-200
+                dark:border-gray-700
+                bg-white
+                dark:bg-gray-800
+                text-gray-900
+                dark:text-white
+                rounded-lg
+                px-3
+                py-2
+                text-sm
+                resize-none
+                focus:outline-none
+                focus:ring-2
+                focus:ring-brand-500"
             />
           </div>
 

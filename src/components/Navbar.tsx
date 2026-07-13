@@ -2,7 +2,7 @@ import { Home, LogOut, PlusSquare, User } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Avatar from './common/Avatar';
-
+import ThemeToggle from "../components/common/ThemeToggle";
 interface NavbarProps {
   onCreatePost: () => void;
 }
@@ -24,7 +24,7 @@ export default function Navbar({ onCreatePost }: NavbarProps) {
           <Link to="/" className="text-xl font-bold text-brand-600">
             Snapfeed
           </Link>
-
+          <ThemeToggle />
           <div className="hidden sm:flex items-center gap-4">
             <button
               onClick={onCreatePost}

@@ -34,7 +34,11 @@ export default function CommentSection({ postId }: { postId: string }) {
           {comments.map((c) => (
             <li key={c.id} className="flex items-start gap-2 group">
               <Avatar src={c.profiles?.avatar_url} name={c.profiles?.display_name} size="sm" />
-              <div className="flex-1 bg-gray-100 rounded-2xl px-3 py-1.5">
+              <div className="flex-1 bg-gray-100
+                dark:bg-gray-800
+                text-gray-900
+                dark:text-gray-100
+                rounded-2xl px-3 py-1.5">
                 <p
                   className={`text-sm break-words ${
                     expandedComments.includes(c.id)
@@ -94,7 +98,9 @@ export default function CommentSection({ postId }: { postId: string }) {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Write a comment..."
-          className="flex-1 bg-gray-100 rounded-full px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+          className="flex-1 bg-gray-100
+          dark:bg-gray-800
+          dark:text-white rounded-full px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
         />
         <button
           type="submit"
